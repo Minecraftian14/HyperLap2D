@@ -31,4 +31,5 @@ public abstract class BasicDrawStrategy implements IDrawStrategy {
         return tiledPlugin.isOnCurrentSelectedLayer(entity) && tiledPlugin.isTile(entity)
                 && ComponentRetriever.get(entity, MainItemComponent.class).entityType == tiledPlugin.getSelectedTileType();
     }
+
 }

@@ -15,11 +15,11 @@ public class ImageDrawStrategy extends BasicDrawStrategy {
     }
 
     @Override
-    public void drawTile(float x, float y, int row, int column) {
+    public Entity drawTile(float x, float y, int row, int column) {
         Entity underneathTile = tiledPlugin.getPluginEntityWithParams(row, column);
         if (underneathTile != null) {
             updateTile(underneathTile);
-            return;
+            return underneathTile;
         }
 
         IFactory itemFactory =  tiledPlugin.getAPI().getItemFactory();
@@ -27,7 +27,9 @@ public class ImageDrawStrategy extends BasicDrawStrategy {
         if (itemFactory.createSimpleImage(tiledPlugin.getSelectedTileName(), temp)) {
             Entity imageEntity = itemFactory.getCreatedEntity();
             postProcessEntity(imageEntity, x, y, row, column);
+            return imageEntity;
         }
+        return null;
     }
 
     @Override

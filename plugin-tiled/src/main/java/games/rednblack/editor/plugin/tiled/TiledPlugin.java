@@ -37,6 +37,7 @@ import games.rednblack.editor.plugin.tiled.save.DataToSave;
 import games.rednblack.editor.plugin.tiled.save.SaveDataManager;
 import games.rednblack.editor.plugin.tiled.tools.DeleteTileTool;
 import games.rednblack.editor.plugin.tiled.tools.DrawTileTool;
+import games.rednblack.editor.plugin.tiled.tools.PrototypeTool;
 import games.rednblack.editor.plugin.tiled.view.dialog.ImportTileSetDialogMediator;
 import games.rednblack.editor.renderer.components.MainItemComponent;
 import games.rednblack.editor.renderer.components.TextureRegionComponent;
@@ -78,6 +79,7 @@ public class TiledPlugin extends H2DPluginAdapter {
     public boolean isSceneLoaded = false;
     public DrawTileTool drawTileTool;
     public DeleteTileTool deleteTileTool;
+    public PrototypeTool prototypeTool;
     public ResourcesManager pluginRM;
     public OffsetPanel offsetPanel;
 
@@ -113,6 +115,14 @@ public class TiledPlugin extends H2DPluginAdapter {
         tileAddButtonStyle.imageUp = new TextureRegionDrawable(pluginRM.getTextureRegion("tool-tilebrush", -1));
         pluginAPI.addTool(DrawTileTool.NAME, tileAddButtonStyle, true, drawTileTool);
 
+        VisImageButton.VisImageButtonStyle tileProtoButtonStyle = new VisImageButton.VisImageButtonStyle();
+        tileProtoButtonStyle.up = skin.getDrawable("toolbar-normal");
+        tileProtoButtonStyle.down = skin.getDrawable("toolbar-down");
+        tileProtoButtonStyle.checked = skin.getDrawable("toolbar-down");
+        tileProtoButtonStyle.over = skin.getDrawable("toolbar-over");
+        tileProtoButtonStyle.imageUp = new TextureRegionDrawable(pluginRM.getTextureRegion("tool-tilebrush", -1));
+        pluginAPI.addTool(PrototypeTool.NAME, tileProtoButtonStyle, true, prototypeTool);
+
         VisImageButton.VisImageButtonStyle tileDeleteButtonStyle = new VisImageButton.VisImageButtonStyle();
         tileDeleteButtonStyle.up = skin.getDrawable("toolbar-normal");
         tileDeleteButtonStyle.down = skin.getDrawable("toolbar-down");
@@ -141,6 +151,7 @@ public class TiledPlugin extends H2DPluginAdapter {
     private void initTools() {
         drawTileTool = new DrawTileTool(this);
         deleteTileTool = new DeleteTileTool(this);
+        prototypeTool = new PrototypeTool(this);
     }
 
     public Entity getPluginEntityWithParams(int row, int column) {

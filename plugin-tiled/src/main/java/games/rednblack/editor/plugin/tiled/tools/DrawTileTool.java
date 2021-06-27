@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.kotcrab.vis.ui.util.OsUtils;
 import games.rednblack.editor.plugin.tiled.TiledPlugin;
+import games.rednblack.editor.plugin.tiled.data.TileVO;
 import games.rednblack.editor.plugin.tiled.tools.drawStrategy.IDrawStrategy;
 import games.rednblack.editor.plugin.tiled.tools.drawStrategy.ImageDrawStrategy;
 import games.rednblack.editor.plugin.tiled.tools.drawStrategy.SpineDrawStrategy;
@@ -132,7 +133,6 @@ public class DrawTileTool implements Tool {
 
     @Override
     public void handleNotification(INotification notification) {
-
     }
 
     @Override
